@@ -1,0 +1,101 @@
+/* Code Words */
+.hidden{
+    display: none;
+}
+
+
+
+/* Index CSS */
+
+.text-welcome, .text-sub{
+    font-family:'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+.text-welcome{
+    font-size: 4rem;
+    font-weight: 900;
+}
+
+.text-sub{
+    font-size: 2rem;;
+}
+
+.start-container{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    position: relative;
+    top: 5rem;
+}
+
+.container-buttons{
+    display: flex;
+    gap: 1rem;
+}
+
+.button-start, .button-check-status{
+    height: fit-content;
+    width: fit-content;
+    position: relative;
+
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.button-check-status{
+    padding-right:1.5rem ;
+    padding-left:1.5rem ;
+}
+
+.button-start{
+    padding-right:2.5rem ;
+    padding-left: 2.5rem ;
+}
+
+
+
+/* Register Form */
+
+.form-register{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-register-input{
+    flex-direction: column;
+    display: flex;
+    gap: 1rem;
+}
+
+.form-input{
+    height: 3rem;
+    width: 25rem;
+    font-size: large;
+    text-align: center;
+}
+
+.button-submit{
+    height: 3rem;
+    width: 50%;
+}
+
+
+@media (max-width: 600px) {
+    .form-input{
+        height: 3rem;
+        width: 19rem;
+        font-size: large;
+        text-align: center;
+    }
+}
