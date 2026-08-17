@@ -116,6 +116,7 @@ btnsubmit.addEventListener("click", function(){
         alert("Entered Description is empty or invalid");
         return;
     }
+
     amount = document.getElementById("input-amount").value;
     description = document.getElementById("input-description").value
 
@@ -124,15 +125,19 @@ btnsubmit.addEventListener("click", function(){
     blurp.classList.add("hidden");
     traAmount.classList.add("hidden");
     // Clear All Fields Also
+
+    console.log(selectedItem);
+    console.log(amount);
+    console.log(description);
+
+    alert("Transaction Type: " + selectedItem + "\nAmount: " + amount + "\nDescription: " + description);
+
+
     containers.forEach(c => c.classList.remove('selected'));
     selectedItem = "none";
 
     document.getElementById("input-amount").value = '';
     document.getElementById("input-description").value = '';
-
-    console.log(selectedItem);
-    console.log(amount);
-    console.log(description);
 });
 
 
