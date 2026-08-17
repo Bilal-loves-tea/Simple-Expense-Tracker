@@ -8,9 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if(strlen($usr) < 3){
         header("Location:./index.php?error=987845653221");
+        return;
     }
     if (strlen($pwd) < 8){
         header("Location:./index.php?error=9865325421");
+        return;
     }
 
     $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
@@ -18,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $stmt->execute();
     if ($stmt->get_result()->num_rows > 0) {
         header("Location:./index.php?error=8754653221");
+        return;
     }
 
     $hash = password_hash($pwd, PASSWORD_DEFAULT);

@@ -10,10 +10,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     /*Double check verification for idiots*/
 
     if(strlen($usr) < 3){
-        die("Username has to be 3+ characters");
+        header("Location:./index.php?error=987845653221");
+        return;
     }
-    if(strlen($pwd) < 8){
-        die("Password has to be 8+ characters");
+    if (strlen($pwd) < 8){
+        header("Location:./index.php?error=9865325421");
+        return;
     }
 
     /*Goku's Fear Prevention */

@@ -26,9 +26,17 @@
             <?php 
                 if(isset($_GET['error']) && $_GET['error'] === 'invalid'){
                     echo "<span>Invalid Username or Password</span>";
+            
                 }
                 if(isset($_GET['status']) && $_GET['status'] === 'success'){
                     echo "<span>Registration Successful, Now Login</span>";
+                    return;
+                }
+                if(isset($_GET['error']) && $_GET['error'] === '987845653221'){
+                    echo "<span>Username must be 3+ characters</span>";
+                }
+                if(isset($_GET['error']) && $_GET['error'] === '9865325421'){
+                    echo "<span>Password must at least 8+ characters</span>";
                 }
             ?>
             <div class="div-register-input">
