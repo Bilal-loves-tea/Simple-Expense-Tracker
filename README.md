@@ -1,5 +1,5 @@
 # Simple-Expense-Tracker
-A simple, minimalistic synchrnized expense tracker
+A simple, minimalistic synchronized expense tracker
 
 # Database Schema
 ```sql
