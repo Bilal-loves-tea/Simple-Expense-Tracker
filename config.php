@@ -2,11 +2,11 @@
 $hostname = 'localhost';
 $user = 'bilal';
 $password = '';
-$database = 'expense_tracker';
+$database = 'expense_tracker_1';
 
 $conn = new mysqli($hostname, $user, $password, $database);
 
 if($conn->connect_error){
-    die("Connection Failed");
+    die("Server Connection Failed");
 }
 ?>

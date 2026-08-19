@@ -58,7 +58,7 @@ $y = $_SESSION['name'];
                     <option value="Utilities">Daily Utilities</option>                                                            
                     <option value="Repayment">Debt Repayment</option>
                     <option value="Loan">Lent a Loan</option>                
-                    <option value="Income">Gift Income</option>
+                    <option value="GiftIncome">Gift Income</option>
                 </select>
                 <div class="for-alignment"></div>
                 <div class="div-next-button"><button id="button-next-form" class="button-action button-next">Next</button></div>

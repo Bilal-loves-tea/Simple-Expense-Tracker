@@ -24,10 +24,6 @@ const containers = document.querySelectorAll(".div-container-buying-something");
 
 var selectedItem = "none";
 
-// INIT FUNCTIONS
-//form.classList.add("hidden");
-//traType.classList.add("hidden");
-//blurp.classList.add("hidden");
 
 // WHEN BUTTON PRESSED ACTIVATE FORM AND BLUR
 btnRecord.addEventListener('click', function(){
@@ -36,6 +32,7 @@ btnRecord.addEventListener('click', function(){
     blurp.classList.remove("hidden");
 });
 
+// Removing form when pressing anywhere else
 blurp.addEventListener('click', function(){
     form.classList.add("hidden");
     traType.classList.add("hidden");
@@ -65,6 +62,8 @@ const categories = {
   sel06: "Clothings",
 };
 
+
+// Taking the selected value while deselecting the others
 Object.entries(categories).forEach(([id, label]) => {
   const el = document.getElementById(id);
   el.addEventListener('click', () => {
@@ -76,13 +75,13 @@ Object.entries(categories).forEach(([id, label]) => {
     el.classList.add('selected');
   });
 });
-
+// The others option, that also deselects everything else when selected
 dropdown.addEventListener("change", (event)=>{
     selectedItem=event.target.value;
     containers.forEach(c => c.classList.remove('selected'));
 });
 
-
+// Going to the next page
 btnNext.addEventListener('click', function(){
     if (selectedItem == "none"){
     alert("Please select transaction type");
@@ -92,6 +91,7 @@ btnNext.addEventListener('click', function(){
     }
 });
 
+// Submitting the form
 btnNext1.addEventListener('click', function(){
     if (selectedItem == "none"){
     alert("Please select transaction type");
@@ -101,6 +101,7 @@ btnNext1.addEventListener('click', function(){
     }
 });
 
+// Final Stuff before sending to the server, Taking values n all
 var amount;
 var description;
 
@@ -124,21 +125,45 @@ btnsubmit.addEventListener("click", function(){
     traType.classList.add("hidden");
     blurp.classList.add("hidden");
     traAmount.classList.add("hidden");
+    
+    // Sending data to server
+    fetch("form_send.php", {
+        method : "POST",
+        headers: {
+            "Content-type": "application/x-www-form-urlencoded"
+        },
+        body: `selectedItem=${encodeURIComponent(selectedItem)}&amount=${encodeURIComponent(amount)}&description=${encodeURIComponent(description)}`
+    })
+    .then(res => res.text())
+    .then(res => console.log(res));
+
+
+
     // Clear All Fields Also
-
-    console.log(selectedItem);
-    console.log(amount);
-    console.log(description);
-
-    alert("Transaction Type: " + selectedItem + "\nAmount: " + amount + "\nDescription: " + description);
-
-
     containers.forEach(c => c.classList.remove('selected'));
     selectedItem = "none";
 
     document.getElementById("input-amount").value = '';
     document.getElementById("input-description").value = '';
+
+
+
 });
+
+/*
+  /$$$$$$  /$$$$$$$$ /$$$$$$$  /$$    /$$ /$$$$$$$$ /$$$$$$$ 
+ /$$__  $$| $$_____/| $$__  $$| $$   | $$| $$_____/| $$__  $$
+| $$  \__/| $$      | $$  \ $$| $$   | $$| $$      | $$  \ $$
+|  $$$$$$ | $$$$$   | $$$$$$$/|  $$ / $$/| $$$$$   | $$$$$$$/
+ \____  $$| $$__/   | $$__  $$ \  $$ $$/ | $$__/   | $$__  $$
+ /$$  \ $$| $$      | $$  \ $$  \  $$$/  | $$      | $$  \ $$
+|  $$$$$$/| $$$$$$$$| $$  | $$   \  $/   | $$$$$$$$| $$  | $$
+ \______/ |________/|__/  |__/    \_/    |________/|__/  |__/
+*/
+// btw, Big Money-ne on asciiart.eu/text-to-ascii-art
+// :( everything had to be put up
+// Variables to send `selectedItem`, `amount` and `description`;
+
 
 
 // TO DO LIST
