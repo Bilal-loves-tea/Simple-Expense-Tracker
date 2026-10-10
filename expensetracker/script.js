@@ -25,6 +25,12 @@ const containers = document.querySelectorAll(".div-container-buying-something");
 var selectedItem = "none";
 
 
+// VIEW EDIT FROM CONSTS
+const viewEdit = document.getElementById("button-2");
+const viewEditForm = document.getElementById("edit-form");
+
+
+
 // WHEN BUTTON PRESSED ACTIVATE FORM AND BLUR
 btnRecord.addEventListener('click', function(){
     form.classList.remove("hidden");
@@ -43,6 +49,9 @@ blurp.addEventListener('click', function(){
     document.getElementById("input-amount").value = '';
     document.getElementById("input-description").value = '';
     selectedItem = "none";
+
+    // View/Edit Form
+    viewEditForm.classList.add('hidden');
 });
 
 
@@ -168,7 +177,26 @@ btnsubmit.addEventListener("click", function(){
 
 // TO DO LIST
 // ===========
-// MAKE THE SQL TAKE IN THE URL AND SEND IT TO THE SERVER FOR STORAGE
-// MAKE THE LOGOUT BUTTON WORK
-// MAKE THE RESTRICTION WITHOUT USER ID 
+// MAKE THE SQL TAKE IN THE URL AND SEND IT TO THE SERVER FOR STORAGE ✔
+// MAKE THE LOGOUT BUTTON WORK ✔
+// MAKE THE RESTRICTION WITHOUT USER ID ✔
 // MAKE THE REST OF THE BUTTONS WORK NOW
+
+
+/*
+  /$$$$$$    /$$     /$$                                    
+ /$$__  $$  | $$    | $$                                    
+| $$  \ $$ /$$$$$$  | $$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$$
+| $$  | $$|_  $$_/  | $$__  $$ /$$__  $$ /$$__  $$ /$$_____/
+| $$  | $$  | $$    | $$  \ $$| $$$$$$$$| $$  \__/|  $$$$$$ 
+| $$  | $$  | $$ /$$| $$  | $$| $$_____/| $$       \____  $$
+|  $$$$$$/  |  $$$$/| $$  | $$|  $$$$$$$| $$       /$$$$$$$/
+ \______/    \___/  |__/  |__/ \_______/|__/      |_______/ 
+*/
+
+
+viewEdit.addEventListener('click', function(){
+    viewEditForm.classList.remove('hidden');
+    blurp.classList.remove("hidden");
+    loadExpenses();
+});

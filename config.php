@@ -1,6 +1,6 @@
 <?php
 $hostname = 'localhost';
-$user = 'bilal';
+$user = 'root';
 $password = '';
 $database = 'expense_tracker_1';
 
