@@ -330,6 +330,136 @@ body{
     flex-direction: column;
 }
 
+/*
+
+VIEW EDIT STUFF
+
+*/
+
+
+.dunno-why-i-need-this{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.div-loading{
+    display: flex;
+    justify-content: center;
+}
+
+.edit-loading-gif{
+    width: 10%;
+}
+
+.view-edit-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.div-spacing{
+    display: inline-block;
+    width: 100%;
+    height: 50%;
+}
+
+.div-spacing-1{
+    display: inline-block;
+    width: 100%;
+    height: 20%;
+}
+
+
+/*PIECE OF SHI MODELING*/
+#expense-list {
+  max-width: 800px;
+  margin: 20px auto;
+  border: 1px solid #000;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #000;
+}
+
+.expense-row {
+  display: grid;
+  grid-template-columns: 100px 1fr 110px 90px 70px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #000;
+  background: #fff;
+}
+
+.expense-row:last-child {
+  border-bottom: none;
+}
+
+.expense-row:not(.expense-header):hover {
+  background: #f2f2f2;
+}
+
+.expense-header {
+  background: #e6e6e6;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.expense-date {
+  color: #555;
+}
+
+.expense-amount {
+  text-align: right;
+  font-weight: bold;
+}
+
+.expense-type {
+  display: inline-block;
+  justify-self: start;
+  padding: 2px 10px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: #f2f2f2;
+  font-size: 13px;
+  text-transform: capitalize;
+}
+
+.edit-btn {
+  padding: 6px 10px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background: #fff;
+  color: #000;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.edit-btn:hover {
+  background: #e6e6e6;
+}
+
+.expense-empty {
+  padding: 24px;
+  text-align: center;
+  color: #555;
+}
+
+/* Small screens: hide the date column */
+@media (max-width: 600px) {
+  .expense-row {
+    grid-template-columns: 1fr 90px 80px 60px;
+  }
+  .expense-date {
+    display: none;
+  }
+}
+
+
+
 
 
 
@@ -463,6 +593,112 @@ body{
 
 }
 
+
+/* ---------- Extra classes (additive) ---------- */
+
+/* Put on the .div-form you want bounded to the viewport */
+.form-fit{
+    position: fixed;
+    width: clamp(300px, 92vw, 860px);
+    max-height: calc(100vh - 4rem);
+    max-height: calc(100dvh - 4rem);
+    box-sizing: border-box;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+/* Put on .dunno-why-i-need-this */
+.edit-inner-fit{
+    flex: 1;
+    min-height: 0;         /* lets the flex child shrink so scrolling can happen */
+}
+
+/* Put on #expense-list (the .view-edit-list element) */
+.edit-list-scroll{
+    min-height: 0;
+    overflow-y: auto;
+}
+
+
+/* ---------- Edit list responsiveness ---------- */
+
+.edit-list-scroll{
+    overscroll-behavior: contain;   /* scrolling the list doesn't scroll the page behind it */
+}
+
+/* ID + class beats the #expense-list rule, so margin can be overridden */
+#edit-form .edit-list-scroll{
+    flex: 1;
+    min-width: 0;
+    margin: 8px auto;
+}
+
+/* minmax(0,1fr) lets the description column shrink instead of overflowing */
+.edit-list-scroll .expense-row{
+    grid-template-columns: 100px minmax(0, 1fr) 110px 90px 70px;
+}
+
+.edit-list-scroll .expense-row > span{
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.edit-list-scroll .expense-type{
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px){
+    .edit-list-scroll .expense-row{
+        grid-template-columns: minmax(0, 1fr) 84px 72px 56px;
+        gap: 8px;
+        padding: 10px 8px;
+    }
+    /* hides the date in data rows AND the "Date" cell in the header */
+    .edit-list-scroll .expense-row > span:first-child{
+        display: none;
+    }
+    .edit-list-scroll .edit-btn{
+        padding: 8px 6px;           /* bigger tap target */
+    }
+}
+
+/* The wrapper becomes a normal block, so the list can use the full width */
+#edit-form .dunno-why-i-need-this{
+    display: block;
+    width: 100%;
+}
+
+/* ID + ID beats the old #expense-list margin/max-width rules */
+#edit-form #expense-list{
+    width: 100%;
+    box-sizing: border-box;
+    margin: 8px auto;
+}
+
+/* The form is the one and only scroller for the edit view */
+#edit-form.form-fit{
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;   /* scrolling here doesn't move the page behind */
+}
+
+/* The list just grows to its natural height inside the form */
+#edit-form #expense-list{
+    max-height: none;
+    overflow: visible;
+}
+
+/* Rows keep their height instead of being squeezed (the list is a flex column) */
+#edit-form .expense-row{
+    flex-shrink: 0;
+}
+
+
+
 /* Items to use */
 .hidden{
     display: none;
@@ -471,4 +707,12 @@ body{
 .selected{
     background-color: rgb(102, 102, 102);
     color: white;
+}
+
+.scrollable-y{
+    overflow-y: scroll;
+}
+
+.scrollable-x{
+    overflow-x: scroll;
 }

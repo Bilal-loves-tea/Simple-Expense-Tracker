@@ -6,6 +6,7 @@ if(!isset($_SESSION['user_id'])){
 $y = $_SESSION['name'];
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,9 +67,7 @@ $y = $_SESSION['name'];
             <hr class="dividing-line dividing-line-1">
             <div class="div-next-button-1"><button class="button-action button-next-1" id="button-next-form-1">Next</button></div>
         </div>
-   <!-- Dumb Div, nobody knows -> </div> -->
-    
-
+        <!-- Dumb Div, nobody knows -> </div> -->
         <!-- Amount and Description Content -->
         <div class="div-flex-for-not-breaking-1 hidden" id="transaction-amount">
             <div class="div-form-amount">
@@ -81,7 +80,24 @@ $y = $_SESSION['name'];
         </div>
     </div>
 
-    <div class="div-background-blur hidden" id="background-blur"></div>
+    <!--View Edit button Function-->
+    <div class="div-form hidden scrollable-y form-fit" id="edit-form">
+        <div class="dunno-why-i-need-this edit-inner-fit">
+            <div class="div-loading" id="loading-animation">
+                <img src="../assets/loading/loading.gif" class="edit-loading-gif">
+            </div>
+            <div class="view-edit-list edit-list-scroll" id="expense-list">
+                <div class="div-spacing-1"></div>
+
+
+                <div class="div-spacing-1"></div>
+            </div>
+        </div>  
+    </div>
+
+
+
+    <div class="div-background-blur hidden" id="background-blur">  </div>
 
 
 
@@ -99,6 +115,7 @@ $y = $_SESSION['name'];
             </div>
         </div>
     </div>
+    <script src="viewedit.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
